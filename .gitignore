@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+instance/
+instance copy/
+.env
+.DS_Store

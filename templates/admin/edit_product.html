@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Product | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="auth-container">
+    <div class="auth-card">
+
+        <h1>Edit Product</h1>
+
+        <form method="POST">
+
+            <label>Product Name</label>
+            <input type="text" name="name"
+                   value="{{ product.name }}" required>
+
+            <label>Description</label>
+            <textarea name="description" required>{{ product.description }}</textarea>
+
+            <label>Price (EGP)</label>
+            <input type="number" name="price"
+                   step="0.01" min="0"
+                   value="{{ product.price }}" required>
+
+            <label>Category</label>
+            <input type="text" name="category"
+                   value="{{ product.category or '' }}">
+
+            <label>Stock</label>
+            <input type="number" name="stock"
+                   min="0" value="{{ product.stock }}" required>
+
+            <label>Image Path</label>
+            <input type="text" name="image"
+                   value="{{ product.image or '' }}">
+
+            <button type="submit" class="btn">
+                Save Changes
+            </button>
+
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

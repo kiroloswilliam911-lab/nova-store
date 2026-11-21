@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Register | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="auth-container">
+    <div class="auth-card">
+        <h1>Create Account</h1>
+        <p>Join NOVA STORE today.</p>
+
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create password" required>
+
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+
+        <p>Already have an account?
+            <a href="{{ url_for('auth.login') }}">Login</a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}

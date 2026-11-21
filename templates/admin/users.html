@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Manage Users</h1>
+    <p>View registered customers.</p>
+</section>
+
+<section class="admin-container">
+    {% for user in users %}
+    <div class="admin-product">
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
+        <p>
+            {% if user.is_admin %}
+                Administrator
+            {% else %}
+                Customer
+            {% endif %}
+        </p>
+    </div>
+    {% else %}
+    <p>No users found.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+
+{% block title %}NOVA STORE | Timeless Elegance{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">THE NOVA COLLECTION</span>
+
+        <h1>Elevate your style,<br>embrace elegance.</h1>
+
+        <p>
+            Discover timeless sophistication and luxury in every
+            detail, tailored for the modern trendsetter.
+        </p>
+
+        <a href="{{ url_for('products.all_products') }}" class="btn">
+            Shop Now →
+        </a>
+
+    </div>
+
+</section>
+
+<section class="featured">
+
+    <h2>Discover Our Collection</h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <img
+                src="{{ product.image or url_for('static', filename='images/placeholder.png') }}"
+                alt="{{ product.name }}"
+            >
+
+            <div class="product-info">
+
+                <h3>{{ product.name }}</h3>
+
+                <p>{{ product.price }} EGP</p>
+
+                <a href="{{ url_for('products.product_details', product_id=product.id) }}"
+                   class="btn">
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <p>No products available yet.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

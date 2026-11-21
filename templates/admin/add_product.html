@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="auth-container">
+    <div class="auth-card">
+        <h1>Add New Product</h1>
+
+        <form method="POST">
+
+            <label>Product Name</label>
+            <input type="text" name="name" required>
+
+            <label>Description</label>
+            <textarea name="description" required></textarea>
+
+            <label>Price (EGP)</label>
+            <input type="number" name="price" step="0.01" min="0" required>
+
+            <label>Category</label>
+            <input type="text" name="category">
+
+            <label>Stock</label>
+            <input type="number" name="stock" min="0" required>
+
+            <label>Image Path</label>
+            <input type="text" name="image" placeholder="static/uploads/product.jpg">
+
+            <button type="submit" class="btn">Add Product</button>
+
+        </form>
+    </div>
+</section>
+
+{% endblock %}

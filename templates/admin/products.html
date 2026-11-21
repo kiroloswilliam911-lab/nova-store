@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block title %}Manage Products | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Manage Products</h1>
+    <a href="{{ url_for('admin.add_product') }}" class="btn">Add Product</a>
+</section>
+
+<section class="admin-container">
+
+    {% for product in products %}
+    <div class="admin-product">
+
+        <h3>{{ product.name }}</h3>
+
+        <p>Price: {{ product.price }} EGP</p>
+        <p>Stock: {{ product.stock }}</p>
+
+        <div class="product-actions">
+
+            <a href="{{ url_for('admin.edit_product', product_id=product.id) }}"
+               class="btn">
+                Edit
+            </a>
+
+            <form action="{{ url_for('admin.delete_product', product_id=product.id) }}"
+                  method="POST">
+                <button type="submit" class="btn delete-btn">
+                    Delete
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+    {% else %}
+    <p>No products found.</p>
+    {% endfor %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="product-details">
+    <div class="details-image">
+        <img src="{{ product.image or url_for('static', filename='images/placeholder.png') }}" alt="{{ product.name }}">
+    </div>
+
+    <div class="details-info">
+        <span class="category">{{ product.category or "General" }}</span>
+
+        <h1>{{ product.name }}</h1>
+
+        <p class="price">{{ product.price }} EGP</p>
+
+        <p>{{ product.description }}</p>
+
+        <p>Available Stock: {{ product.stock }}</p>
+
+        {% if product.stock > 0 %}
+            <a href="{{ url_for('cart.add_to_cart', product_id=product.id) }}" class="btn">Add to Cart</a>
+        {% else %}
+            <p>Out of Stock</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

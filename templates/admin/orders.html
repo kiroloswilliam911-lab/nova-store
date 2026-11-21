@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Orders | NOVA STORE{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Manage Orders</h1>
+    <p>View and monitor customer orders.</p>
+</section>
+
+<section class="admin-container">
+
+    {% for order in orders %}
+    <div class="order-card">
+
+        <h3>Order #{{ order.id }}</h3>
+
+        <p><strong>Customer:</strong> {{ order.user.username }}</p>
+        <p><strong>Email:</strong> {{ order.user.email }}</p>
+        <p><strong>Total:</strong> {{ "%.2f"|format(order.total_price) }} EGP</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <p><strong>Address:</strong> {{ order.address }}</p>
+        <p><strong>Phone:</strong> {{ order.phone }}</p>
+        <p><strong>Date:</strong> {{ order.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+
+        <hr>
+
+        <h4>Ordered Products</h4>
+
+        {% for item in order.items %}
+        <div class="order-item">
+            <p><strong>{{ item.product_name }}</strong></p>
+            <p>Price: {{ item.price }} EGP</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Subtotal: {{ "%.2f"|format(item.price * item.quantity) }} EGP</p>
+        </div>
+        {% else %}
+        <p>No product details available.</p>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <p>No orders have been placed yet.</p>
+    {% endfor %}
+
+</section>
+
+{% endblock %}
